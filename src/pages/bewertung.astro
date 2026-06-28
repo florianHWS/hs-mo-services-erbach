@@ -1,0 +1,145 @@
+---
+const BASE = import.meta.env.BASE_URL;
+const GOOGLE_REVIEW_URL = '#'; // TODO: https://g.page/r/.../review
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bewertung abgeben – Mo Services Erbach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href={`${BASE}styles/global.css`} />
+  <style>
+    .star-btn { cursor: pointer; transition: transform 0.15s ease, color 0.15s ease; }
+    .star-btn:hover, .star-btn.hovered { color: #F59E0B; transform: scale(1.25); }
+    .star-btn.selected { color: #F59E0B; }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-[#0E1015] px-4 py-12">
+  <div class="w-full max-w-md">
+    <!-- Logo -->
+    <div class="text-center mb-10">
+      <a href={`${BASE}`} class="inline-flex items-center gap-3 text-white/60 hover:text-white transition-colors">
+        <svg width="32" height="18" viewBox="0 0 80 36" fill="none"><path d="M40 18 C30 8, 10 4, 0 10 C8 12, 16 14, 20 18 C16 14, 8 16, 2 24 C12 20, 28 20, 40 18Z" fill="#6B82B0" opacity="0.8"/><path d="M40 18 C50 8, 70 4, 80 10 C72 12, 64 14, 60 18 C64 14, 72 16, 78 24 C68 20, 52 20, 40 18Z" fill="#6B82B0" opacity="0.8"/></svg>
+        <span class="font-display font-bold text-sm tracking-widest uppercase">Mo Services</span>
+      </a>
+    </div>
+
+    <!-- Card: Star rating -->
+    <div id="card-rating" class="bg-white/4 border border-white/10 rounded-2xl p-8 text-center">
+      <p class="text-white/40 text-xs font-semibold uppercase tracking-widest mb-3">Ihre Meinung zählt</p>
+      <h1 class="font-display font-bold text-2xl text-white mb-2">Wie war Ihr Erlebnis?</h1>
+      <p class="text-white/40 text-sm mb-8">Klicken Sie auf die Sterne, um zu bewerten.</p>
+      <div class="flex justify-center gap-3 mb-6" id="stars">
+        {[1,2,3,4,5].map(n => (
+          <button class="star-btn text-white/20 text-5xl leading-none" data-value={n} aria-label={`${n} Sterne`}>★</button>
+        ))}
+      </div>
+      <p id="star-label" class="text-white/30 text-sm h-5 transition-all duration-200"></p>
+    </div>
+
+    <!-- Card: Positive (4-5 stars) -->
+    <div id="card-positive" class="hidden bg-white/4 border border-white/10 rounded-2xl p-8 text-center">
+      <div class="flex justify-center mb-5 text-amber-400 text-4xl gap-0.5" id="selected-stars-display"></div>
+      <h2 class="font-display font-bold text-2xl text-white mb-2">Vielen Dank!</h2>
+      <p class="text-white/45 text-sm mb-8">Das freut uns sehr. Würden Sie uns eine Google-Bewertung hinterlassen? Das hilft anderen, uns zu finden.</p>
+      <a id="google-link" href={GOOGLE_REVIEW_URL} target="_blank" rel="noopener"
+         class="block w-full bg-[#6B82B0] hover:bg-[#8FA3C8] text-white font-semibold py-4 rounded-xl transition-all duration-200 hover:scale-[1.02] hover:shadow-[0_0_24px_rgba(107,130,176,0.4)] active:scale-100 tracking-wide mb-3">
+        Jetzt auf Google bewerten
+      </a>
+      <p class="text-white/20 text-xs">Dauert nicht mal 30 Sekunden.</p>
+    </div>
+
+    <!-- Card: Private feedback (1-3 stars) -->
+    <div id="card-feedback" class="hidden bg-white/4 border border-white/10 rounded-2xl p-8">
+      <div class="flex mb-5 text-amber-400 text-2xl gap-0.5" id="selected-stars-low"></div>
+      <h2 class="font-display font-bold text-2xl text-white mb-2">Schade, das tut uns leid.</h2>
+      <p class="text-white/45 text-sm mb-6">Was können wir verbessern? Ihr Feedback hilft uns direkt.</p>
+      <form id="feedback-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-white/40 uppercase tracking-wider mb-1.5">Ihr Name</label>
+          <input type="text" name="name" placeholder="Optional" class="w-full bg-white/5 border border-white/10 focus:border-[#6B82B0]/50 text-white rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-white/25" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-white/40 uppercase tracking-wider mb-1.5">Ihr Feedback *</label>
+          <textarea name="kommentar" required rows="4" placeholder="Was hat nicht gepasst? Was können wir besser machen?" class="w-full bg-white/5 border border-white/10 focus:border-[#6B82B0]/50 text-white rounded-xl px-4 py-3 text-sm outline-none transition-colors placeholder:text-white/25 resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full bg-[#6B82B0] hover:bg-[#8FA3C8] text-white font-semibold py-4 rounded-xl transition-all duration-200 hover:scale-[1.02] active:scale-100 tracking-wide">
+          Feedback senden
+        </button>
+      </form>
+    </div>
+
+    <!-- Card: Feedback success -->
+    <div id="card-feedback-success" class="hidden bg-white/4 border border-white/10 rounded-2xl p-8 text-center">
+      <div class="w-16 h-16 rounded-full bg-[#6B82B0]/12 flex items-center justify-center mx-auto mb-5">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6B82B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+      </div>
+      <h2 class="font-display font-bold text-xl text-white mb-2">Feedback erhalten.</h2>
+      <p class="text-white/40 text-sm">Wir melden uns und nehmen Ihr Feedback ernst. Danke.</p>
+    </div>
+
+    <div class="text-center mt-8">
+      <a href={`${BASE}`} class="text-white/25 hover:text-white/50 text-xs transition-colors tracking-wide">← Zurück zur Website</a>
+    </div>
+  </div>
+
+  <script define:vars={{ GOOGLE_REVIEW_URL }}>
+    const labels = ['', 'Schlecht', 'Nicht so gut', 'Es geht', 'Gut', 'Ausgezeichnet'];
+    const starBtns = document.querySelectorAll('.star-btn');
+    const starLabel = document.getElementById('star-label');
+    const cardRating = document.getElementById('card-rating');
+    const cardPositive = document.getElementById('card-positive');
+    const cardFeedback = document.getElementById('card-feedback');
+    const cardFeedbackSuccess = document.getElementById('card-feedback-success');
+    const selectedStarsDisplay = document.getElementById('selected-stars-display');
+    const selectedStarsLow = document.getElementById('selected-stars-low');
+    let selected = 0;
+
+    starBtns.forEach(btn => {
+      const val = parseInt(btn.dataset.value);
+      btn.addEventListener('mouseenter', () => {
+        starBtns.forEach(b => {
+          const bv = parseInt(b.dataset.value);
+          b.classList.toggle('hovered', bv <= val);
+        });
+        if (starLabel) starLabel.textContent = labels[val];
+      });
+      btn.addEventListener('mouseleave', () => {
+        starBtns.forEach(b => b.classList.remove('hovered'));
+        if (starLabel) starLabel.textContent = selected ? labels[selected] : '';
+      });
+      btn.addEventListener('click', () => {
+        selected = val;
+        starBtns.forEach(b => {
+          const bv = parseInt(b.dataset.value);
+          b.classList.toggle('selected', bv <= val);
+        });
+        if (starLabel) starLabel.textContent = labels[val];
+
+        setTimeout(() => {
+          cardRating?.classList.add('hidden');
+          if (val >= 4) {
+            if (selectedStarsDisplay) selectedStarsDisplay.textContent = '★'.repeat(val);
+            cardPositive?.classList.remove('hidden');
+            if (GOOGLE_REVIEW_URL !== '#') {
+              setTimeout(() => window.open(GOOGLE_REVIEW_URL, '_blank'), 1500);
+            }
+          } else {
+            if (selectedStarsLow) selectedStarsLow.textContent = '★'.repeat(val);
+            cardFeedback?.classList.remove('hidden');
+          }
+        }, 500);
+      });
+    });
+
+    document.getElementById('feedback-form')?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      cardFeedback?.classList.add('hidden');
+      cardFeedbackSuccess?.classList.remove('hidden');
+    });
+  </script>
+</body>
+</html>

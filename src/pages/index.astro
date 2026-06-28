@@ -1,0 +1,394 @@
+---
+import Layout from '../layouts/Layout.astro';
+const BASE = import.meta.env.BASE_URL;
+const PHONE_TEL = "tel:+4915141331121";
+const PHONE_DISPLAY = "01514 133 1121";
+
+const services = [
+  { icon: "🏠", name: "Haushaltsreinigung", desc: "Privathaushalte in Erbach und Umgebung. Einmalig oder regelmäßig." },
+  { icon: "🏢", name: "Unterhaltsreinigung", desc: "Regelmäßige Gebäudereinigung für Büros, Praxen und Gewerbe." },
+  { icon: "🪟", name: "Fensterreinigung", desc: "Innen und außen, vom Einfenster bis zur Glasfassade." },
+  { icon: "🪜", name: "Treppenhaus", desc: "Wöchentlich, zweiwöchentlich oder monatlich. Verlässlich." },
+  { icon: "✨", name: "Grundreinigung", desc: "Intensive Tiefenreinigung nach Umzug, Renovation oder Sonderanlass." },
+  { icon: "🗂️", name: "Büroreinigung", desc: "Damit Ihr Team sich auf die Arbeit konzentrieren kann." },
+  { icon: "🏗️", name: "Baureinigung", desc: "Endreinigung nach Bauprojekten. Baustaub, Farbreste, Rückstände." },
+];
+
+const testimonials = [
+  { name: "Sandra K.", ort: "Erbach", text: "Sehr zuverlässig und gründlich. Kommen immer pünktlich und hinterlassen alles tadellos. Seit einem Jahr dabei.", stars: 5 },
+  { name: "Thomas M.", ort: "Michelstadt", text: "Büroreinigung läuft reibungslos, ohne dass wir uns darum kümmern müssen. Genau das wollten wir.", stars: 5 },
+  { name: "Katrin B.", ort: "Erbach", text: "Grundreinigung nach dem Umzug war super. Preis-Leistung stimmt, freundlich und schnell.", stars: 5 },
+];
+---
+<Layout>
+  <!-- HERO -->
+  <section id="hero" class="relative min-h-screen flex items-center parallax-bg pt-16"
+           style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=80')">
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0E1015]/92 via-[#0E1015]/70 to-transparent"></div>
+    <div class="hero-shimmer"></div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-0">
+      <div class="max-w-2xl">
+        <div class="inline-flex items-center gap-2 bg-[#6B82B0]/12 border border-[#6B82B0]/25 text-[#A3B8D8] text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-8 fade-up">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#6B82B0] inline-block"></span>
+          Reinigungsservice Erbach · Odenwald
+        </div>
+        <h1 class="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight mb-6 fade-up">
+          Sauberkeit,<br />
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#6B82B0] to-[#A3B8D8]">auf die Sie sich</span><br />
+          verlassen können.
+        </h1>
+        <p class="text-white/55 text-lg md:text-xl leading-relaxed mb-10 font-light fade-up">
+          Mo Services reinigt Privathaushalte, Büros und Gewerberäume im Odenwald. Pünktlich, gründlich und ohne Aufwand für Sie.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 fade-up">
+          <a href="#kontakt" class="bg-[#6B82B0] hover:bg-[#8FA3C8] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-[0_0_32px_rgba(107,130,176,0.4)] active:scale-100 text-center tracking-wide">
+            Kostenloses Angebot anfragen
+          </a>
+          <a href={PHONE_TEL} class="border border-white/20 hover:border-white/50 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:bg-white/5 text-center tracking-wide flex items-center justify-center gap-2">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            {PHONE_DISPLAY}
+          </a>
+        </div>
+        <div class="flex flex-wrap items-center gap-6 mt-10 fade-up">
+          {[["⭐", "4,9 / 5 Sterne"], ["✓", "Versichert"], ["✓", "Festpreise"], ["✓", "Termingarantie"]].map(([icon, label]) => (
+            <div class="flex items-center gap-1.5 text-white/45 text-sm">
+              <span class="text-[#6B82B0]">{icon}</span>
+              {label}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/20 flex flex-col items-center gap-2 animate-bounce">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </section>
+
+  <!-- KONTAKTFORMULAR -->
+  <section id="kontakt" class="bg-[#F5F6F8] py-20 px-4">
+    <div class="max-w-2xl mx-auto">
+      <div class="text-center mb-10 fade-up">
+        <p class="text-[#6B82B0] text-xs font-bold uppercase tracking-widest mb-3">Angebot anfordern</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-[#0E1015] mb-3">Was darf sauber werden?</h2>
+        <p class="text-[#0E1015]/50 text-sm">Kostenlos und unverbindlich. Wir melden uns innerhalb von 24 Stunden.</p>
+      </div>
+      <div class="bg-white border border-[#E2E5EC] rounded-2xl shadow-sm overflow-hidden fade-up">
+        <div class="flex border-b border-[#E2E5EC]">
+          {["Problem", "Kontakt"].map((step, i) => (
+            <div class={`step-tab flex-1 py-3.5 text-center text-xs font-semibold tracking-widest uppercase transition-colors duration-300 ${i===0 ? 'text-[#6B82B0] border-b-2 border-[#6B82B0]' : 'text-[#0E1015]/30'}`} data-step={i}>
+              <span class="inline-flex items-center gap-2">
+                <span class={`w-5 h-5 rounded-full text-[10px] font-bold flex items-center justify-center step-dot-${i} ${i===0 ? 'bg-[#6B82B0] text-white' : 'bg-[#0E1015]/10 text-[#0E1015]/40'}`}>{i+1}</span>
+                {step}
+              </span>
+            </div>
+          ))}
+        </div>
+        <form id="main-form" class="p-6 md:p-8">
+          <div class="form-step active" id="step-1">
+            <p class="text-[#0E1015]/60 text-sm mb-5">Was soll gereinigt werden? (Mehrfachauswahl möglich)</p>
+            <div class="grid grid-cols-2 gap-3 mb-6">
+              {["Haushaltsreinigung", "Büroreinigung", "Fensterreinigung", "Treppenhaus", "Grundreinigung", "Unterhaltsreinigung"].map(item => (
+                <label class="flex items-center gap-3 border border-[#E2E5EC] rounded-xl p-3.5 cursor-pointer hover:border-[#6B82B0]/50 hover:bg-[#6B82B0]/4 transition-all duration-150 group">
+                  <input type="checkbox" name="leistungen" value={item} class="w-4 h-4 accent-[#6B82B0]" />
+                  <span class="text-sm text-[#0E1015]/70 group-hover:text-[#0E1015] font-medium">{item}</span>
+                </label>
+              ))}
+              <label class="col-span-2 w-[calc(50%-6px)] mx-auto flex items-center gap-3 border border-[#E2E5EC] rounded-xl p-3.5 cursor-pointer hover:border-[#6B82B0]/50 hover:bg-[#6B82B0]/4 transition-all duration-150 group">
+                <input type="checkbox" name="leistungen" value="Sonstiges" class="w-4 h-4 accent-[#6B82B0]" />
+                <span class="text-sm text-[#0E1015]/70 group-hover:text-[#0E1015] font-medium">Sonstiges</span>
+              </label>
+            </div>
+            <button type="button" id="to-step-2" class="w-full bg-[#6B82B0] hover:bg-[#8FA3C8] text-white font-semibold py-4 rounded-xl transition-all duration-200 hover:scale-[1.01] hover:shadow-[0_0_24px_rgba(107,130,176,0.35)] active:scale-100 tracking-wide">
+              Weiter
+            </button>
+          </div>
+          <div class="form-step" id="step-2">
+            <button type="button" id="back-step" class="flex items-center gap-1.5 text-[#0E1015]/40 hover:text-[#0E1015]/70 text-sm mb-5 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+              Zurück
+            </button>
+            <div class="space-y-4 mb-5">
+              <div>
+                <label class="block text-xs font-semibold text-[#0E1015]/50 uppercase tracking-wider mb-1.5">Name *</label>
+                <input type="text" name="name" required placeholder="Ihr vollständiger Name" class="w-full border border-[#E2E5EC] focus:border-[#6B82B0]/60 rounded-xl px-4 py-3.5 text-sm outline-none transition-colors bg-[#F9FAFB] text-[#0E1015] placeholder:text-[#0E1015]/25" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-[#0E1015]/50 uppercase tracking-wider mb-1.5">Telefon *</label>
+                <input type="tel" name="telefon" required placeholder="z.B. 0151 23456789" class="w-full border border-[#E2E5EC] focus:border-[#6B82B0]/60 rounded-xl px-4 py-3.5 text-sm outline-none transition-colors bg-[#F9FAFB] text-[#0E1015] placeholder:text-[#0E1015]/25" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-[#0E1015]/50 uppercase tracking-wider mb-1.5">Ort</label>
+                <input type="text" name="ort" placeholder="Erbach, Michelstadt, ..." class="w-full border border-[#E2E5EC] focus:border-[#6B82B0]/60 rounded-xl px-4 py-3.5 text-sm outline-none transition-colors bg-[#F9FAFB] text-[#0E1015] placeholder:text-[#0E1015]/25" />
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-[#0E1015]/50 uppercase tracking-wider mb-1.5">Nachricht (optional)</label>
+                <textarea name="nachricht" rows="3" placeholder="z.B. Notfall bitte melden, bin ab 14 Uhr erreichbar" class="w-full border border-[#E2E5EC] focus:border-[#6B82B0]/60 rounded-xl px-4 py-3.5 text-sm outline-none transition-colors bg-[#F9FAFB] text-[#0E1015] placeholder:text-[#0E1015]/25 resize-none"></textarea>
+              </div>
+            </div>
+            <button type="submit" class="w-full bg-[#6B82B0] hover:bg-[#8FA3C8] text-white font-semibold py-4 rounded-xl transition-all duration-200 hover:scale-[1.01] hover:shadow-[0_0_24px_rgba(107,130,176,0.35)] active:scale-100 tracking-wide">
+              Angebot anfordern
+            </button>
+            <p class="text-[#0E1015]/30 text-xs text-center mt-4">Ihre Daten werden vertraulich behandelt und nicht weitergegeben.</p>
+          </div>
+          <div class="form-step" id="step-success">
+            <div class="py-8 text-center">
+              <div class="w-16 h-16 rounded-full bg-[#6B82B0]/12 flex items-center justify-center mx-auto mb-4">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6B82B0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </div>
+              <h3 class="font-display font-bold text-xl text-[#0E1015] mb-2">Anfrage erhalten.</h3>
+              <p class="text-[#0E1015]/50 text-sm">Wir melden uns innerhalb von 24 Stunden bei Ihnen.</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIAL PROOF -->
+  <section id="bewertungen" class="bg-[#0E1015] py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-[#6B82B0] text-xs font-bold uppercase tracking-widest mb-3">Kundenstimmen</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-white">Zahlen, die sprechen.</h2>
+      </div>
+      <div class="grid grid-cols-3 gap-4 md:gap-8 mb-16">
+        {[
+          { target: 230, suffix: "+", label: "Aufträge" },
+          { target: 3, suffix: " Jahre", label: "Erfahrung" },
+          { display: "4,9", suffix: "/5", label: "Sterne Schnitt" },
+        ].map(({ target, suffix, label, display }: { target?: number, suffix: string, label: string, display?: string }) => (
+          <div class="text-center fade-up">
+            <div class="font-display font-extrabold text-3xl md:text-5xl text-white mb-1.5">
+              {display
+                ? <span>{display}<span class="text-[#6B82B0] text-xl md:text-3xl">{suffix}</span></span>
+                : <><span data-target={target} class="counter">0</span><span class="text-[#6B82B0] text-xl md:text-3xl">{suffix}</span></>
+              }
+            </div>
+            <p class="text-white/35 text-xs uppercase tracking-widest font-semibold">{label}</p>
+          </div>
+        ))}
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        {testimonials.map(({ name, ort, text, stars }) => (
+          <div class="bg-white/4 border border-white/8 rounded-2xl p-6 fade-up hover:bg-white/6 transition-colors duration-300">
+            <div class="flex gap-0.5 mb-4">
+              {Array(stars).fill(0).map(() => <span class="text-amber-400 text-sm">★</span>)}
+            </div>
+            <p class="text-white/65 text-sm leading-relaxed mb-5 italic">"{text}"</p>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-[#6B82B0]/20 flex items-center justify-center text-[#6B82B0] text-xs font-bold">
+                {name[0]}
+              </div>
+              <div>
+                <p class="text-white text-sm font-semibold">{name}</p>
+                <p class="text-white/30 text-xs">{ort}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center fade-up">
+        <p class="text-white/35 text-sm mb-4">War Ihr letzter Auftrag ein Erfolg?</p>
+        <a href={`${BASE}bewertung`} class="inline-flex items-center gap-3 bg-white/8 hover:bg-white/12 border border-white/12 hover:border-[#6B82B0]/40 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-[1.02] group tracking-wide">
+          <span class="text-amber-400">★</span>
+          Bewertung abgeben
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition-transform duration-200"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <p class="text-white/20 text-xs mt-3">Dauert nicht mal 30 Sekunden, versprochen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIE -->
+  <section id="galerie" class="bg-[#F5F6F8] py-20 px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-[#6B82B0] text-xs font-bold uppercase tracking-widest mb-3">Vorher / Nachher</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-[#0E1015]">Unser Ergebnis, sichtbar.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          {
+            label: "Büroreinigung",
+            before: "https://images.unsplash.com/photo-1563453392212-326f5e854473?auto=format&fit=crop&w=600&q=80",
+            after: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=600&q=80",
+          },
+          {
+            label: "Grundreinigung",
+            before: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?auto=format&fit=crop&w=600&q=80",
+            after: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?auto=format&fit=crop&w=600&q=80",
+          },
+          {
+            label: "Fensterreinigung",
+            before: "https://images.unsplash.com/photo-1584622781564-1d987f7333c1?auto=format&fit=crop&w=600&q=80",
+            after: "https://images.unsplash.com/photo-1560440021-33f9b867899d?auto=format&fit=crop&w=600&q=80",
+          },
+        ].map(({ label, before, after }) => (
+          <div class="fade-up">
+            <p class="text-[#0E1015]/50 text-xs font-bold uppercase tracking-widest mb-3 text-center">{label}</p>
+            <div class="grid grid-cols-2 gap-2 rounded-2xl overflow-hidden">
+              <div class="relative">
+                <img src={before} alt={`${label} Vorher`} class="w-full h-52 object-cover grayscale opacity-75" loading="lazy" />
+                <span class="absolute bottom-2 left-2 bg-black/60 text-white/80 text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">Vorher</span>
+              </div>
+              <div class="relative">
+                <img src={after} alt={`${label} Nachher`} class="w-full h-52 object-cover" loading="lazy" />
+                <span class="absolute bottom-2 right-2 bg-[#6B82B0] text-white text-[10px] font-bold uppercase tracking-widest px-2 py-1 rounded">Nachher</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- LEISTUNGEN -->
+  <section id="leistungen" class="relative parallax-bg py-24 px-4"
+           style="background-image: url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1400&q=80')">
+    <div class="absolute inset-0 bg-[#0E1015]/90"></div>
+    <div class="relative z-10 max-w-7xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-[#6B82B0] text-xs font-bold uppercase tracking-widest mb-3">Was wir machen</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-white">Unsere Leistungen.</h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {services.map(({ icon, name, desc }) => (
+          <div class="bg-white/5 border border-white/8 hover:border-[#6B82B0]/35 rounded-2xl p-5 fade-up transition-all duration-300 hover:bg-white/8 group">
+            <span class="text-2xl mb-3 block">{icon}</span>
+            <h3 class="font-display font-bold text-white text-base mb-2 group-hover:text-[#A3B8D8] transition-colors">{name}</h3>
+            <p class="text-white/40 text-sm leading-relaxed">{desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10 fade-up">
+        <a href="#kontakt" class="inline-flex items-center gap-2 text-[#A3B8D8] hover:text-white text-sm font-semibold transition-colors duration-200 tracking-wide group">
+          Jetzt anfragen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- UEBER UNS -->
+  <section id="ueber-uns" class="bg-[#F5F6F8] py-20 px-4">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="relative fade-up">
+        <div class="rounded-2xl overflow-hidden aspect-[4/5] relative">
+          <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=700&q=80" alt="Mo Services" class="w-full h-full object-cover" loading="lazy" />
+          <div class="absolute inset-0 bg-gradient-to-t from-[#0E1015]/70 via-transparent to-transparent"></div>
+          <div class="absolute top-5 right-5 bg-[#6B82B0] text-white rounded-xl px-4 py-3 text-center shadow-lg">
+            <p class="font-display font-extrabold text-2xl leading-none">3+</p>
+            <p class="text-[10px] font-semibold uppercase tracking-wider mt-0.5 opacity-85">Jahre</p>
+          </div>
+          <div class="absolute bottom-5 left-5">
+            <p class="font-display font-bold text-white text-lg">Mo Services</p>
+            <p class="text-white/60 text-xs tracking-wider uppercase">Erbach, Odenwald</p>
+          </div>
+        </div>
+      </div>
+      <div class="fade-up">
+        <p class="text-[#6B82B0] text-xs font-bold uppercase tracking-widest mb-4">Uber uns</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-[#0E1015] mb-5">Sauberkeit ist keine Nebensache.</h2>
+        <p class="text-[#0E1015]/55 leading-relaxed mb-5">
+          Mo Services steht für verlässliche Reinigung mit Sorgfalt. Wir betreuen Privathaushalte, Büros und Gewerbeobjekte im Odenwald. Wir sind erst fertig, wenn Sie zufrieden sind.
+        </p>
+        <p class="text-[#0E1015]/55 leading-relaxed mb-8">
+          Aus Erbach heraus, für die Region. Kurze Wege, persönliche Ansprechpartner, feste Teams pro Objekt.
+        </p>
+        <ul class="space-y-3 mb-10">
+          {[
+            "Pünktlichkeit und Verlässlichkeit",
+            "Feste Teams, keine wechselnden Reinigungskräfte",
+            "Umweltschonende Reinigungsmittel",
+            "Transparente Festpreise, keine versteckten Kosten",
+            "Versichert und haftpflichtgedeckt",
+          ].map(item => (
+            <li class="flex items-start gap-3 text-[#0E1015]/65 text-sm">
+              <span class="w-5 h-5 rounded-full bg-[#6B82B0]/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#6B82B0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a href={PHONE_TEL} class="inline-flex items-center gap-2 bg-[#0E1015] hover:bg-[#1A1E26] text-white font-semibold px-7 py-3.5 rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-[0_0_24px_rgba(14,16,21,0.3)] active:scale-100 tracking-wide">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.92 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Jetzt anrufen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROZESS -->
+  <section id="prozess" class="relative parallax-bg py-24 px-4"
+           style="background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80')">
+    <div class="absolute inset-0 bg-[#0E1015]/92"></div>
+    <div class="relative z-10 max-w-7xl mx-auto">
+      <div class="text-center mb-14 fade-up">
+        <p class="text-[#6B82B0] text-xs font-bold uppercase tracking-widest mb-3">So läuft es ab</p>
+        <h2 class="font-display font-bold text-3xl md:text-4xl text-white">In 3 Schritten zu Sauberkeit.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          { n: "01", title: "Anfrage stellen", desc: "Formular ausfüllen oder anrufen. Wir melden uns innerhalb von 24 Stunden mit einem Angebot." },
+          { n: "02", title: "Termin vereinbaren", desc: "Wir kommen zum Objekt, besprechen den Umfang und legen gemeinsam einen Termin fest." },
+          { n: "03", title: "Ergebnis genießen", desc: "Unser Team reinigt. Sie kommen zurück, alles ist fertig. Wir sind erst zufrieden, wenn Sie es sind." },
+        ].map(({ n, title, desc }) => (
+          <div class="fade-up text-center">
+            <div class="font-display font-extrabold text-6xl text-[#6B82B0]/10 mb-4 select-none leading-none">{n}</div>
+            <div class="w-10 h-10 rounded-full bg-[#6B82B0]/15 border border-[#6B82B0]/30 flex items-center justify-center mx-auto mb-4 -mt-8">
+              <span class="text-[#6B82B0] font-bold text-sm">{parseInt(n)}</span>
+            </div>
+            <h3 class="font-display font-bold text-white text-lg mb-3">{title}</h3>
+            <p class="text-white/40 text-sm leading-relaxed max-w-xs mx-auto">{desc}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12 fade-up">
+        <a href="#kontakt" class="bg-[#6B82B0] hover:bg-[#8FA3C8] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-[0_0_32px_rgba(107,130,176,0.4)] active:scale-100 tracking-wide inline-block">
+          Kostenloses Angebot anfragen
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const toStep2 = document.getElementById('to-step-2');
+    const backStep = document.getElementById('back-step');
+    const step1 = document.getElementById('step-1');
+    const step2 = document.getElementById('step-2');
+    const stepSuccess = document.getElementById('step-success');
+    const tabs = document.querySelectorAll('.step-tab');
+    const form = document.getElementById('main-form');
+
+    function setStep(s: number) {
+      [step1, step2, stepSuccess].forEach((el, i) => {
+        el?.classList.toggle('active', i === s);
+      });
+      tabs.forEach((tab, i) => {
+        const el = tab as HTMLElement;
+        const dot = el.querySelector('span span') as HTMLElement;
+        if (i <= s && s < 2) {
+          el.classList.add('text-[#6B82B0]', 'border-b-2', 'border-[#6B82B0]');
+          el.classList.remove('text-[#0E1015]/30');
+          if (i === s) {
+            dot?.classList.add('bg-[#6B82B0]', 'text-white');
+            dot?.classList.remove('bg-[#0E1015]/10', 'text-[#0E1015]/40');
+          }
+        } else {
+          el.classList.remove('text-[#6B82B0]', 'border-b-2', 'border-[#6B82B0]');
+          el.classList.add('text-[#0E1015]/30');
+          dot?.classList.remove('bg-[#6B82B0]', 'text-white');
+          dot?.classList.add('bg-[#0E1015]/10', 'text-[#0E1015]/40');
+        }
+      });
+    }
+
+    toStep2?.addEventListener('click', () => setStep(1));
+    backStep?.addEventListener('click', () => setStep(0));
+    form?.addEventListener('submit', (e) => {
+      e.preventDefault();
+      setStep(2);
+    });
+  </script>
+</Layout>
