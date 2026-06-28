@@ -8,7 +8,6 @@ const services = [
   { icon: "🏠", name: "Haushaltsreinigung", desc: "Privathaushalte in Erbach und Umgebung. Einmalig oder regelmäßig." },
   { icon: "🏢", name: "Unterhaltsreinigung", desc: "Regelmäßige Gebäudereinigung für Büros, Praxen und Gewerbe." },
   { icon: "🪟", name: "Fensterreinigung", desc: "Innen und außen, vom Einfenster bis zur Glasfassade." },
-  { icon: "🪜", name: "Treppenhaus", desc: "Wöchentlich, zweiwöchentlich oder monatlich. Verlässlich." },
   { icon: "✨", name: "Grundreinigung", desc: "Intensive Tiefenreinigung nach Umzug, Renovation oder Sonderanlass." },
   { icon: "🗂️", name: "Büroreinigung", desc: "Damit Ihr Team sich auf die Arbeit konzentrieren kann." },
   { icon: "🏗️", name: "Baureinigung", desc: "Endreinigung nach Bauprojekten. Baustaub, Farbreste, Rückstände." },
@@ -26,21 +25,20 @@ const testimonials = [
            style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1400&q=80')">
     <div class="absolute inset-0 bg-gradient-to-r from-[#0E1015]/92 via-[#0E1015]/70 to-transparent"></div>
     <div class="hero-shimmer"></div>
-    <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-20 md:py-0">
-      <div class="max-w-2xl">
+    <div class="relative z-10 max-w-5xl mx-auto px-4 md:px-8 py-20 md:py-0 text-center">
         <div class="inline-flex items-center gap-2 bg-[#6B82B0]/12 border border-[#6B82B0]/25 text-[#A3B8D8] text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-8 fade-up">
           <span class="w-1.5 h-1.5 rounded-full bg-[#6B82B0] inline-block"></span>
           Reinigungsservice Erbach · Odenwald
         </div>
-        <h1 class="font-display font-extrabold text-4xl md:text-6xl text-white leading-tight mb-6 fade-up">
+        <h1 class="font-display font-extrabold text-5xl md:text-7xl lg:text-8xl text-white leading-[1.05] mb-6 fade-up">
           Sauberkeit,<br />
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#6B82B0] to-[#A3B8D8]">auf die Sie sich</span><br />
           verlassen können.
         </h1>
-        <p class="text-white/55 text-lg md:text-xl leading-relaxed mb-10 font-light fade-up">
+        <p class="text-white/55 text-lg md:text-xl leading-relaxed mb-10 font-light fade-up max-w-2xl mx-auto">
           Mo Services reinigt Privathaushalte, Büros und Gewerberäume im Odenwald. Pünktlich, gründlich und ohne Aufwand für Sie.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 fade-up">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center fade-up">
           <a href="#kontakt" class="bg-[#6B82B0] hover:bg-[#8FA3C8] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-[0_0_32px_rgba(107,130,176,0.4)] active:scale-100 text-center tracking-wide">
             Kostenloses Angebot anfragen
           </a>
@@ -49,7 +47,7 @@ const testimonials = [
             {PHONE_DISPLAY}
           </a>
         </div>
-        <div class="flex flex-wrap items-center gap-6 mt-10 fade-up">
+        <div class="flex flex-wrap items-center justify-center gap-6 mt-10 fade-up">
           {[["⭐", "4,9 / 5 Sterne"], ["✓", "Versichert"], ["✓", "Festpreise"], ["✓", "Termingarantie"]].map(([icon, label]) => (
             <div class="flex items-center gap-1.5 text-white/45 text-sm">
               <span class="text-[#6B82B0]">{icon}</span>
@@ -57,7 +55,6 @@ const testimonials = [
             </div>
           ))}
         </div>
-      </div>
     </div>
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/20 flex flex-col items-center gap-2 animate-bounce">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
@@ -239,6 +236,12 @@ const testimonials = [
           </div>
         ))}
       </div>
+      <div class="text-center mt-10 fade-up">
+        <a href="#kontakt" class="inline-flex items-center gap-2 bg-[#0E1015] hover:bg-[#1A1E26] text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200 hover:scale-105 hover:shadow-[0_0_24px_rgba(14,16,21,0.25)] active:scale-100 tracking-wide">
+          Jetzt kostenloses Angebot anfragen
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="group-hover:translate-x-1 transition-transform"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -251,7 +254,7 @@ const testimonials = [
         <p class="text-[#6B82B0] text-xs font-bold uppercase tracking-widest mb-3">Was wir machen</p>
         <h2 class="font-display font-bold text-3xl md:text-4xl text-white">Unsere Leistungen.</h2>
       </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {services.map(({ icon, name, desc }) => (
           <div class="bg-white/5 border border-white/8 hover:border-[#6B82B0]/35 rounded-2xl p-5 fade-up transition-all duration-300 hover:bg-white/8 group">
             <span class="text-2xl mb-3 block">{icon}</span>
